@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Event</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background: #800080;
+        }
+        .calculator{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+        button{
+            height:80px;
+            width:80px;
+            margin:3px;
+            border:none;
+            border-radius:50px;
+            background: #008000;
+            color:#fff;
+            font-size:40px;
+            cursor:pointer;
+        }
+        .calculator{
+            background: #c0c0c0;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+
+        }
+        button:hover{
+            background:#0000ff;
+        }
+        .textview{
+            width:320px;
+            margin:10px;
+            padding:8px;
+            font-size:50px;
+            border:none;
+            border-radius:50px;
+            background: darkviolet;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="calculator">
+        <h1 align="center" style="font-family: verdana; color: blue;">KALKULATOR</h1>
+
+        <form action="" name="form">
+            <input class="textview" type="text" name="textview" />
+        </form>
+        <table>
+            <tr>
+                <td><button onclick="clean()">C</button></td>
+                <td><button onclick="back()"><</button></td>
+                <td><button onclick="insert('/')">/</button></td>
+                <td><button onclick="insert('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="insert(7)">7</button></td>
+                <td><button onclick="insert(8)">8</button></td>
+                <td><button onclick="insert(9)">9</button></td>
+                <td><button onclick="insert('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="insert(4)">4</button></td>
+                <td><button onclick="insert(5)">5</button></td>
+                <td><button onclick="insert(6)">6</button></td>
+                <td rowspan="2"><button style="height:165px" onclick="insert('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="insert(1)">1</button></td>
+                <td><button onclick="insert(2)">2</button></td>
+                <td><button onclick="insert(3)">3</button></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button style="width:165px" onclick="insert(0)">0</button></td>
+                <td><button onclick="insert('.')">.</button></td>
+                <td><button onclick="equal()">=</button></td>
+            </tr>
+        </table>
+    </div>
+   
+    <script type="text/javascript">
+        function insert(num){
+            document.form.textview.value = document.form.textview.value+num;
+        }
+        function equal(){
+            var exp = document.form.textview.value;
+            document.form.textview.value = eval(exp);
+        }
+        function clean(){
+            document.form.textview.value = "";
+        }
+        function back(){
+            var exp = document.form.textview.value;
+            if(exp){
+                document.form.textview.value = exp.substring(0,exp.length-1);
+            }
+        }
+    </script>    
+</body>
+</html>
